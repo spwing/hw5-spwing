@@ -6,6 +6,117 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<!-- your evaluation here -->
+	<h1> Evaluation of Expense App #6</h1>
+	<h2> Disclaimer!! I couldn't get the functionality
+		of adding expenses to appear on the expense chart. In some of my 
+		comments here I am assuming the functionality that the designer 
+		was going for - that you enter a payment and it shows up on the 
+		view payment details screen. If you refresh without saving than your 
+		payment doesn't automatically save.
+	</h2>
+	<ol>
+		<li>
+			<h3>Problem: User might go back without saving data</h3>
+			<h3>Heuristic</h3>
+			<p> Error prevention</p>
+			<h3>Description</h3>
+			<p>
+				Because the display of the payment details is on another reloaded 
+				screen, everytime you leave that screen if data isn't saved by 
+				pressing the save button, it is lost. There is no back arrow on the 
+				screen, so you have to use the web browser back arrow which reloads 
+				the page.
+			</p>
+			<h3>Severity: Severe</h3>
+			<h3>Recommendation</h3>
+			<p>
+				Rather than a save button, I would automatically save a payment after 
+				they hit enter. 
+				If you combine this with the ability to delete a payment, this will 
+				give the user more autonomy while ensuring that it is harder to make 
+				mistakes with forgetting to save (error prevention). Finally, for 
+				efficiency of use I would recommend keeping everything on one page 
+				so that the user doesnt keep having to toggle between pages
+			</p>
+			<h3>Screenshot</h3>
+			<iframe width="560" height="315" 
+			src="https://youtube.com/embed/XuFpE_EmwbA" frameborder="0" allowfullscreen></iframe>
+		</li>
+		<li>
+			<h3>Problem: User doesn't can't see that their expense was added</h3>
+			<h3>Heuristic</h3>
+			<p>Visibility of System Status</p>
+			<h3>Description</h3>
+			<p> 
+				When a user enters a payment, only the form inputs clear, but 
+				nothing else happens so it is not visible to the user that 
+				the expense was added. The expense list is on a different page, so 
+				if the user wanted to confirm that the expense was added they would 
+				have to toggle to that page to check.
+			</p>
+			<h3>Severity: Severe</h3>
+			<h3>Recommendation</h3>
+			<p>
+				I would display the expenses in the same screen and have the added 
+				expense row get briefly highlighted or faded out and back when it gets 
+				added to the chart so that the color change draws the eye to notice something 
+				happened.
+			</p>
+			<h3>Screenrecording</h3>
+			<iframe width="560" height="315" 
+			src="https://youtube.com/embed/Eaj0Ks7bajk" frameborder="0" allowfullscreen></iframe>
+		</li>
+		<li>
+			<h3>Problem: User could produce an error notification</h3>
+			<h3>Heuristic </h3>
+			<p>
+				Error Reporting, Diagnosis, and Recovery 
+			</p>
+			<h3>Description</h3>
+			<p>
+				When I try and choose the same person to add two different expense 
+				amounts I get an error notification that I have to close out manually. It
+				describes what I can't do, but not how to fix it and its hard to know 
+				where on the page the error is coming from. 
+			</p>
+			<h3>Severity: Major</h3>
+			<h3>Recommendation</h3>
+			<p>
+				I would leave open two expense amount columns and have one set for Neo
+				and one set for Trinity. Start them both at zero so that the user 
+				doesn't need to change one if they don't have to. Further you don't have 
+				to click the drop down so it is faster to get to both sections and there 
+				is no confusion in what amount 1 and amount 2 means.
+			</p>
+			<h3>Screenshot</h3>
+			<img width="700" src="images/error.png">
+
+		</li>
+		<li>
+			<h3>Problem: All the buttons and interactive components 
+				are small and can't be controlled by keys
+			</h3>
+			<h3>Heuristic</h3>
+			<p>Flexibility and Efficiency</p>
+			<h3>Description</h3>
+			<p>
+				All of the buttons are small and smushed together in one corner making it 
+				hard for someone to quickly interact with the tool. 
+			</p>
+			<h3>Severity: Major</h3>
+			<h3>Recommendation</h3>
+			<p> I would make the buttons a lot bigger and sections for typing a lot bigger 
+				as well. It would also be nice to be able to use keyboard shortcuts, such as 
+				enter to assist you in getting to the next element quickly. Finally you 
+				could autofill the date to todays date to give the user a shortcut to 
+				something that they might select more often.
+			</p>
+			<h3>Screenshot</h3>
+			<img width="700" src="images/small.png">
+		</li>
+		
+		
+	</ol>
+	
 </body>
 </html>

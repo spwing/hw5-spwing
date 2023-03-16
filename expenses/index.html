@@ -1,1 +1,230 @@
-<!-- Replace this directory with your Expenses app from HW3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Expenses</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+   <!-- Replace hw3-starter below with your repo name (hw3-yourusername) so you can save!  -->
+   <ma-data v-model="expenses" src="https://github.com/designftw/hw3-spwing/expenses/data.json"></ma-data>
+   
+   <section id="body">
+	<section class="sidenav">  
+		<h1>
+			<span v-if="expenses.user">
+				Logged in as {{ expenses.user?.username }}
+				<button @click="expenses.logout()">Log out</button>
+			</span>
+			<button v-else @click="expenses.login()">Log in</button>
+		</h1>
+	   <h1 id="addExpense">Add an Expense Below:</h1>
+	   <form onsubmit="return false">
+	 
+			<label id = "expenseDescription">
+				<input type="date" id="date" name="date"v-model="my.date">
+			</label>
+	 
+	 
+	 
+	 
+			<div id="whoUsed">
+				Who used the item purchased?
+				<label>
+					Neo
+					<input type="checkbox" id="NeoUsed" name="NeoUsed" v-model="my.neo_used_bool">
+				</label>
+				<label>
+					Trinity
+					<input type="checkbox" id="TrinityUsed" name="TrinityUsed" v-model="my.trinity_used_bool">
+				</label>
+			</div>
+	 
+	 
+	 
+	 
+			<div id="whoUsed">
+					Who paid for the item purchased?
+					<label>
+						Neo
+						<input type="checkbox" id="NeoPaid" value="true" name="NeoPaid" v-model="my.neo_paid_bool">
+					</label>
+					<label>
+						Trinity
+						<input type="checkbox" id="NeoPaid" value="true" name="TrinityPaid" v-model="my.trinity_paid_bool">
+					</label>
+				</div>
+	 
+	 
+	 
+	 
+			<div id="expenseDescription">
+				Expense Description
+				<textarea name="expenseDescription" v-model="my.title"></textarea>
+				  
+				Expense Amount:
+				<input type="number" id="expenseAmount" name="expenseAmount" v-model="my.amount"
+				min="0" max="500000">
+			</div>
+
+			<div id="currency">
+				<label>
+					USD
+					<input type="radio" value="USD" name="currency" v-model="my.neo_paid_bool">
+				</label>
+				<label>
+					EUR
+					<input type="radio" value="EUR" name="currency" v-model="my.neo_paid_bool">
+				</label>
+				<label>
+					GBP
+					<input type="radio" value="GBP" name="currency" v-model="my.neo_paid_bool">
+				</label>
+			  
+			  
+			</div>
+	 
+	 
+	 
+	 
+			<button type="submit" @click="addExpense(); expenses.save();">Add Expense</button>
+	   </form>
+	   		
+	 </section>
+	 
+	 <h1 class="theyOwe" v-if="totalNeoOwes > 0">Neo Owes ${{totalNeoOwes}}</h1>
+	 <h1 v-if="totalTrinityOwes > 0"></h1>Trinity Owes ${{totalTrinityOwes}}</h1>
+	 <section class="expenseList">
+	
+		<div>
+		<h1>Neo's Payments</h1>
+		<div class="together">
+		<div class="zone">
+			<button class = "expenseDropdown" @click="this.forYourselfDropdown(1)">Joint</button>
+			<div id="table1">
+					<div class="expenseDiv" v-for="(expense, i) in expenses">
+						<div v-if="expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.date}}</div>
+						<div v-if="expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.title}}</div>
+						<div v-if="expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.amount}}</div>
+						<div v-if="expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+					</div>
+			</div>
+		</div>
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(2)">For Trinity</button>
+			<div id="table2">
+				<div class="expenseDiv" v-for="(expense, i) in expenses">
+					<div v-if="expense.neo_paid_bool && !expense.neo_used_bool">{{expense.date}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.neo_used_bool">{{expense.title}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.neo_used_bool">{{expense.amount}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.neo_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(3)">For Yourself</button>
+			<div id="table3">
+				<div class="expenseDiv"  v-for="(expense, i) in expenses">
+					<div v-if="expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.date}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.title}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.amount}}</div>
+					<div v-if="expense.neo_paid_bool && !expense.trinity_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+		<h1>Trinity's Payments</h1>
+		<div class="together">
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(4)">Joint</button>
+			<div id="table4">
+				<div class="expenseDiv" v-for="(expense, i) in expenses">
+					<div v-if="!expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.date}}</div>
+					<div v-if="!expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.title}}</div>
+					<div v-if="!expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.amount}}</div>
+					<div v-if="!expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool"><button id="delete" @click="reomveExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(5)">For Neo</button>
+			<div id="table5">
+				<div class="expenseDiv" v-for="(expense, i) in expenses">
+					<div>
+						<div v-if="!expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.date}}</div>
+						<div v-if="!expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.title}}</div>
+						<div v-if="!expense.neo_paid_bool && !expense.trinity_used_bool">{{expense.amount}}</div>
+						<div v-if="!expense.neo_paid_bool && !expense.trinity_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(6)">For Yourself</button>
+			<div id="table6">
+				<div class="expenseDiv" v-for="(expense, i) in expenses">
+					<div v-if="!expense.neo_paid_bool && !expense.neo_used_bool">{{expense.date}}</div>
+					<div v-if="!expense.neo_paid_bool && !expense.neo_used_bool">{{expense.title}}</div>
+					<div v-if="!expense.neo_paid_bool && !expense.neo_used_bool">{{expense.amount}}</div>
+					<div v-if="!expense.neo_paid_bool && !expense.neo_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+		<div>
+		<h1>Joint Payments</h1>
+		<div class="together">
+		<div class="zone">
+			<button class = "expenseDropdown" @click="this.forYourselfDropdown(1)">Joint</button>
+			<div id="table1">
+					<div class="expenseDiv" v-for="(expense, i) in expenses">
+						<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.date}}</div>
+						<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.title}}</div>
+						<div v-if="expense.neo_paid_bool  && expense.trinity_paid_bool && expense.neo_used_bool && expense.trinity_used_bool">{{expense.amount}}</div>
+						<div v-if="expense.neo_paid_bool && expense.neo_used_bool && expense.trinity_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+					</div>
+			</div>
+		</div>
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(2)">For Trinity</button>
+			<div id="table2">
+				<div class="expenseDiv" v-for="(expense, i) in expenses">
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.neo_used_bool">{{expense.date}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.neo_used_bool">{{expense.title}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.neo_used_bool">{{expense.amount}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.neo_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+		<div class="zone">
+		<button class = "expenseDropdown" @click="this.forYourselfDropdown(3)">For Yourself</button>
+			<div id="table3">
+				<div class="expenseDiv"  v-for="(expense, i) in expenses">
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.trinity_used_bool">{{expense.date}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.trinity_used_bool">{{expense.title}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.trinity_used_bool">{{expense.amount}}</div>
+					<div v-if="expense.neo_paid_bool && expense.trinity_paid_bool && !expense.trinity_used_bool"><button id="delete" @click="removeExpense(i); expenses.save();">delete</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</section>
+	</section>
+
+
+   
+</div>
+
+<script src="index.js" type="module"></script>
+</body>
+</html>
+

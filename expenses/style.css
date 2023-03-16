@@ -1,0 +1,153 @@
+#table1, #table2, #table3, #table4, #table5, #table6 {
+    display: none;
+}
+button {
+    display:inline-block;
+    padding:0.5em 3em;
+    border: 2px black;
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    color: black;
+    text-align:center;
+    transition: all 0.15s;
+    background-color: white;
+}
+button:hover{
+    color:#DDDDDD;
+    border-color:#DDDDDD;
+}
+
+@media all and (max-width:30em){
+    button{
+    display:block;
+    margin:0.4em auto;
+    }
+}
+.together {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
+
+.expenseList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 400px;
+    width: auto;
+    height: 100%;
+    overflow-x: hidden;
+}
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 400px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: var(--palebrown);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    box-sizing: border-box;
+    padding: 40px;
+    padding-bottom: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+ }
+
+#body {
+    width: 100%;
+    height:100%;
+    padding-left: 440px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: fit-content;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.body {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100%;
+
+}
+#addExpense {
+    text-transform: capitalize;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#whoUsed {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#expenseDescription {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#currency {
+    padding-bottom: 40px;
+}
+textarea {
+    padding-bottom: 40px;
+}
+
+input,textarea {
+    border: 10px;
+}
+
+label, header, input, button,form {
+    font-size:larger;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+:root {
+--lightblue: #208AAE;
+--darkblue: #0D2149;
+--palebrown: #F9EBE0;
+--darkbrown: #463F1A;
+
+}
+.theyOwe {
+    font-size: larger;
+}
+
+.expenseDiv {
+    border-color: black;
+    border-style: solid;
+    border-width: 4px;
+    background: white;
+    border-top: 4px;
+    border-bottom: 4px;
+}

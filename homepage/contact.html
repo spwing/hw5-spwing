@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Edit this to set page title</title>
 	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>Contact</title>
 </head>
 <body>
-	<!-- your html here -->
+	<div class="title">
+        <div class="nav-item">
+            <a href="index.html"><h1>Shannon Wing</h1></a>
+        </div>   
+    </div>
+	<div class="nav">
+		<ul class="navbar">
+			<li class="nav-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="nav-item">
+			<a href="contact.html">Contact</a>
+			</li>
+			<li class="nav-item">
+			<a href="cv.html">CV</a>
+			</li>
+			<li class="nav-item">
+				<a href="portfolio.html">Portfolio</a>
+			</li>
+		</ul>
+	</div>
+	
+	
+    <section class="content" id="grabCofee"> 
+		<h3> Want to grab coffee? Reach out! </h3>
+		<form class="form"
+		action="https://formspree.io/f/mwkjokra"
+		method="POST"
+		>
+			<div class="enterContact">
+				<div class ="enter">
+					<label>
+						Your email:
+						<input type="email" name="email">
+					</label>
+				</div>
+				<div class ="enter">
+					<label>
+						Your message:
+						<textarea name="message"></textarea>
+					</label>
+				</div>
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+	</section>
 </body>
 </html>

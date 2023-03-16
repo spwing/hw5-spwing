@@ -1,0 +1,62 @@
+[
+	{
+		"title": "Cold Weather",
+		"neo_paid_bool": false,
+		"trininty_paid_bool": true,
+		"trinity_used_bool": false,
+		"neo_used_bool": true,
+		"amount": 200,
+		"date": "2023-02-01",
+		"currency": "USD"
+	},
+	{
+		"title": "America",
+		"neo_paid_bool": false,
+		"trininty_paid_bool": false,
+		"trinity_used_bool": true,
+		"neo_used_bool": true,
+		"amount": 200,
+		"date": "2023-02-01",
+		"currency": "USD"
+	},
+	{
+		"title": "Car Jack",
+		"neo_paid_bool": false,
+		"trininty_paid_bool": true,
+		"trinity_used_bool": true,
+		"neo_used_bool": false,
+		"amount": 900,
+		"date": "2023-02-01",
+		"currency": "USD"
+	},
+	{
+		"title": "Rent",
+		"neo_paid_bool": false,
+		"trininty_paid_bool": true,
+		"trinity_used_bool": true,
+		"neo_used_bool": true,
+		"amount": 1000,
+		"date": "2023-02-01",
+		"currency": "USD"
+	},
+	{
+		"title": "Car Rental",
+		"neo_paid_bool": false,
+		"trininty_paid_bool": true,
+		"trinity_used_bool": false,
+		"neo_used_bool": true,
+		"amount": 300,
+		"date": "2023-02-01",
+		"currency": "USD"
+	},
+	{
+		"title": "Trinity",
+		"neo_paid_bool": true,
+		"trininty_paid_bool": true,
+		"trinity_used_bool": true,
+		"neo_used_bool": false,
+		"amount": 300,
+		"date": "2023-02-01",
+		"currency": "USD"
+	}
+]
